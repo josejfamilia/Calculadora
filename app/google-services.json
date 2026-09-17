@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "606850905548",
+    "project_id": "calculadora-b1aff",
+    "storage_bucket": "calculadora-b1aff.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:606850905548:android:808a44ca5f9c6c52e05969",
+        "android_client_info": {
+          "package_name": "com.endominios.calculadora"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDRwkCegBkqYsLXa43iTCh6uOdUQh3Eaxk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
