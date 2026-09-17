@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Cuerpo de la calculadora -->
+    <path
+        android:fillColor="#3A3A40"
+        android:pathData="M34,23 H74 A9,9 0 0 1 83,32 V76 A9,9 0 0 1 74,85 H34 A9,9 0 0 1 25,76 V32 A9,9 0 0 1 34,23 Z" />
+
+    <!-- Pantalla -->
+    <path
+        android:fillColor="#0D0D0F"
+        android:pathData="M35,29 H73 A4,4 0 0 1 77,33 V41 A4,4 0 0 1 73,45 H35 A4,4 0 0 1 31,41 V33 A4,4 0 0 1 35,29 Z" />
+
+    <!-- Acento en la pantalla -->
+    <path android:fillColor="#FF9F0A" android:pathData="M62,33 L72,33 L72,39 L62,39 Z" />
+
+    <!-- Fila 1 de botones -->
+    <path android:fillColor="#5A5A62" android:pathData="M32,49 L44,49 L44,57 L32,57 Z" />
+    <path android:fillColor="#5A5A62" android:pathData="M48,49 L60,49 L60,57 L48,57 Z" />
+    <path android:fillColor="#FF9F0A" android:pathData="M64,49 L76,49 L76,57 L64,57 Z" />
+
+    <!-- Fila 2 de botones -->
+    <path android:fillColor="#5A5A62" android:pathData="M32,61 L44,61 L44,69 L32,69 Z" />
+    <path android:fillColor="#5A5A62" android:pathData="M48,61 L60,61 L60,69 L48,69 Z" />
+    <path android:fillColor="#FF9F0A" android:pathData="M64,61 L76,61 L76,69 L64,69 Z" />
+
+    <!-- Fila 3 de botones -->
+    <path android:fillColor="#5A5A62" android:pathData="M32,73 L44,73 L44,81 L32,81 Z" />
+    <path android:fillColor="#5A5A62" android:pathData="M48,73 L60,73 L60,81 L48,81 Z" />
+    <path android:fillColor="#FF9F0A" android:pathData="M64,73 L76,73 L76,81 L64,81 Z" />
+</vector>
