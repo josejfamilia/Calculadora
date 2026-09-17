@@ -27,6 +27,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -41,6 +42,7 @@ import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -49,6 +51,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.content.pm.PackageInfoCompat
 import com.endominios.calculadora.ui.theme.CalcBackgroundBottom
 import com.endominios.calculadora.ui.theme.CalcBackgroundTop
 import com.endominios.calculadora.ui.theme.CalcFunctionButton
@@ -59,11 +62,25 @@ import com.endominios.calculadora.ui.theme.CalcOperator
 import com.endominios.calculadora.ui.theme.CalcOperatorPressed
 import com.endominios.calculadora.ui.theme.CalcTextPrimary
 import com.endominios.calculadora.ui.theme.CalcTextSecondary
+import com.endominios.calculadora.update.ForceUpdateDialog
+import com.endominios.calculadora.update.UpdateChecker
+import com.endominios.calculadora.update.openPlayStoreListing
 
 @Composable
 fun CalculatorScreen(modifier: Modifier = Modifier) {
     var state by remember { mutableStateOf(CalculatorState()) }
     val onAction: (CalculatorAction) -> Unit = { action -> state = state.reduce(action) }
+
+    val context = LocalContext.current
+    var forceUpdateMessage by remember { mutableStateOf<String?>(null) }
+
+    LaunchedEffect(Unit) {
+        val packageInfo = context.packageManager.getPackageInfo(context.packageName, 0)
+        val versionCode = PackageInfoCompat.getLongVersionCode(packageInfo)
+        UpdateChecker.checkForForcedUpdate(versionCode) { required, message ->
+            if (required) forceUpdateMessage = message
+        }
+    }
 
     Box(
         modifier = modifier
@@ -95,6 +112,13 @@ fun CalculatorScreen(modifier: Modifier = Modifier) {
             )
 
             CreditsFooter(modifier = Modifier.padding(bottom = 16.dp))
+        }
+
+        forceUpdateMessage?.let { message ->
+            ForceUpdateDialog(
+                message = message,
+                onUpdateClick = { openPlayStoreListing(context) }
+            )
         }
     }
 }
